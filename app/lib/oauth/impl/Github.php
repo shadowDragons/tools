@@ -28,9 +28,7 @@ class Github implements Oauth
     {
 
         if (empty($this->params->code)) {
-            return [
-                'error' => '回调code异常',
-            ];
+            return [];
         }
         $url = 'https://github.com/login/oauth/access_token';
         $arr = [
@@ -57,19 +55,7 @@ class Github implements Oauth
                 ];
             }
         }
-        if (!empty($json_decode->error_description)) {
-            return [
-                'error' => $json_decode->error_description,
-            ];
-        }
-        if (!empty($json_decode->error)) {
-            return [
-                'error' => $json_decode->error,
-            ];
-        }
-        return [
-            'error' => '未知异常',
-        ];
+        return [];
     }
 
 }

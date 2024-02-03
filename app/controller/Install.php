@@ -13,20 +13,16 @@ use think\facade\View;
 
 class Install extends Base
 {
-    const PHP_VERSION = '7.2.5';
-    const MYSQL_VERSION = '5.7';
-    private $installed = true;
 
     public function __destruct()
     {
-        !$this->installed && clear_cache(true);
+        clear_cache(true);
     }
 
     public function initialize()
     {
         // 检测是否已安装
-        $this->installed = file_exists(app()->getRootPath() . 'install.lock');
-        if ($this->installed) {
+        if (file_exists(app()->getRootPath() . 'install.lock')) {
             exit('你已安装成功，需要重新安装请删除 install.lock 文件');
         }
         clear_cache(true);
@@ -36,13 +32,13 @@ class Install extends Base
     {
         // 检查安装环境
         $requirements = [
-            'php_version' => PHP_VERSION >= self::PHP_VERSION,
+            'php_version' => PHP_VERSION >= '7.2.5',
             'pdo_mysql' => extension_loaded("pdo_mysql"),
 //            'zend_opcache' => extension_loaded("Zend OPcache"),
             'curl' => extension_loaded("curl"),
             'fileinfo' => extension_loaded("fileinfo"),
             'ziparchive' => class_exists("ZipArchive"),
-            'is_writable' => is_writable(app()->getRuntimePath()) && is_writable(app()->getRootPath() . 'plugin'),
+            'is_writable' => is_writable(app()->getRuntimePath()) && is_writable(app()->getRootPath() . 'public'),
         ];
         reset_opcache();
         $step = Request::param('step');
@@ -70,13 +66,8 @@ class Install extends Base
 
         $dsn = 'mysql:host=' . $params['hostname'] . ';dbname=' . $params['database'] . ';port=' . $params['hostport'] . ';charset=utf8';
         try {
-            if ((new PDO($dsn, $params['username'], $params['password']))->getAttribute(PDO::ATTR_SERVER_VERSION) < self::MYSQL_VERSION) {
-                throw new \Exception('MySQL版本必须大于' . self::MYSQL_VERSION);
-            }
+            new PDO($dsn, $params['username'], $params['password']);
         } catch (\Exception $e) {
-            if ($e->getCode() === 1045) {
-                return error('数据库连接失败，请检查连接信息是否正确');
-            }
             return error($e->getMessage());
         }
         try {

@@ -28,9 +28,6 @@
 [Plugin Template 使用](docs/Plugin_Template.md)      
 [Plugin Permission 使用](docs/Plugin_Permission.md)
 
-#### 演示搭建视频
-* <https://www.bilibili.com/video/BV12g411z7KL>
-
 ### 🎊 环境要求
 
 * `PHP` >= 7.2.5
