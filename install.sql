@@ -35,9 +35,9 @@ CREATE TABLE `toolbox_config`  (
 -- ----------------------------
 -- Records of toolbox_config
 -- ----------------------------
-INSERT INTO `toolbox_config` VALUES (1, 'global.title', '傲星工具箱', '2021-12-22 18:31:59', '2022-09-05 16:28:49');
+INSERT INTO `toolbox_config` VALUES (1, 'global.title', '零叉工具箱', '2021-12-22 18:31:59', '2022-09-05 16:28:49');
 INSERT INTO `toolbox_config` VALUES (2, 'global.subtitle', '一个非常Nice的在线工具箱1', '2021-12-22 18:31:59', '2022-09-09 09:55:16');
-INSERT INTO `toolbox_config` VALUES (3, 'global.keywords', '傲星工具箱,在线工具箱,aoaostar,pluto', '2021-12-22 18:31:59', '2021-12-22 18:31:59');
+INSERT INTO `toolbox_config` VALUES (3, 'global.keywords', '零叉工具箱,在线工具箱,aoaostar,pluto', '2021-12-22 18:31:59', '2021-12-22 18:31:59');
 INSERT INTO `toolbox_config` VALUES (4, 'global.description', '这是一个非常Nice的在线工具箱', '2021-12-22 18:31:59', '2021-12-22 18:31:59');
 INSERT INTO `toolbox_config` VALUES (5, 'global.template', 'default', '2021-12-22 18:31:59', '2021-12-22 18:31:59');
 INSERT INTO `toolbox_config` VALUES (6, 'global.foot_code', '\n            <div style=\"display: none\">\n                <script type=\"text/javascript\" src=\"https://s9.cnzz.com/z_stat.php?id=1280727911&web_id=1280727911\"></script>\n            </div>', '2021-12-22 21:34:41', '2022-09-05 15:50:47');
